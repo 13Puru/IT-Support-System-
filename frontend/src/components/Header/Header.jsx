@@ -70,6 +70,14 @@ export default function Header({ setActiveView }) {
                             Home
                         </NavLink>
                         <NavLink
+                            to='/forum'
+                            className={({ isActive }) =>
+                                `font-medium transition-colors duration-200 ${isActive ? "text-indigo-700" : "text-gray-600"} hover:text-indigo-600`
+                            }
+                        >
+                            Discussion Forum
+                        </NavLink>
+                        <NavLink
                             to='/contact-us'
                             className={({ isActive }) =>
                                 `font-medium transition-colors duration-200 ${isActive ? "text-indigo-700" : "text-gray-600"} hover:text-indigo-600`
@@ -151,6 +159,15 @@ export default function Header({ setActiveView }) {
                                 Home
                             </NavLink>
                             <NavLink
+                                to='/forum'
+                                className={({ isActive }) =>
+                                    `font-medium transition-colors duration-200 py-2 ${isActive ? "text-indigo-700" : "text-gray-600"} hover:text-indigo-600`
+                                }
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                Discussion Forum
+                            </NavLink>
+                            <NavLink
                                 to='/contact-us'
                                 className={({ isActive }) =>
                                     `font-medium transition-colors duration-200 py-2 ${isActive ? "text-indigo-700" : "text-gray-600"} hover:text-indigo-600`
@@ -159,15 +176,33 @@ export default function Header({ setActiveView }) {
                             >
                                 Contact Us
                             </NavLink>
+                            <NavLink
+                                to='/about'
+                                className={({ isActive }) =>
+                                    `font-medium transition-colors duration-200 py-2 ${isActive ? "text-indigo-700" : "text-gray-600"} hover:text-indigo-600`
+                                }
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                About
+                            </NavLink>
 
                             <div className="flex flex-col space-y-3 pt-4">
                                 {isLoggedIn ? (
-                                    <button
-                                        className="flex items-center justify-center space-x-2 text-indigo-700 hover:text-indigo-800 border border-indigo-200 px-4 py-2 rounded-md font-medium cursor-pointer"
-                                    >
-                                        <UserCircle size={20} />
-                                        <span>Welcome {name}</span>
-                                    </button>
+                                    <>
+                                        <button
+                                            className="flex items-center justify-center space-x-2 text-indigo-700 hover:text-indigo-800 border border-indigo-200 px-4 py-2 rounded-md font-medium cursor-pointer"
+                                        >
+                                            <UserCircle size={20} />
+                                            <span>Welcome {name}</span>
+                                        </button>
+                                        <Link
+                                            to="/dashboard"
+                                            className="text-indigo-700 hover:text-indigo-800 border border-indigo-200 hover:bg-gray-50 px-4 py-2 rounded-md font-medium transition-colors duration-200 text-center"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            View Dashboard
+                                        </Link>
+                                    </>
                                 ) : (
                                     <>
                                         <Link

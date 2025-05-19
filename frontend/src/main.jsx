@@ -15,6 +15,7 @@ import Register from './components/Register/Register';
 import Otp from './components/Otp/Otp';
 import Dashboard from './components/Dashboard/Dashboard';
 import About from './components/About/About';
+import DiscussionForum from './components/DiscussionForum/DiscussionForum';
 
 // Function to check if the user is authenticated
 const isAuthenticated = () => {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: '', element: <Home /> },
+      { path: 'forum', element: <DiscussionForum /> },
       { path: 'contact-us', element: <Contact /> },
       { path: 'about', element: <About /> },
       { path: 'login', element: <Login /> },
