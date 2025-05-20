@@ -7,6 +7,10 @@ import './index.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// Import ChatBotProvider
+import { ChatBotProvider } from './components/Chatbot/ChatbotContext';
+import EnhancedChatBot from './components/Chatbot/EnhancedChatbot';
+
 import Layout from './Layout';
 import Home from './components/Home/Home';
 import Contact from './components/Contact/Contact';
@@ -50,19 +54,23 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
-    {/* Add ToastContainer here, outside of RouterProvider */}
-    <ToastContainer
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={true}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-    />
+    <ChatBotProvider>
+      <RouterProvider router={router} />
+      {/* Add EnhancedChatBot here, available on all pages */}
+      <EnhancedChatBot />
+      {/* Add ToastContainer here, outside of RouterProvider */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </ChatBotProvider>
   </StrictMode>
 );
