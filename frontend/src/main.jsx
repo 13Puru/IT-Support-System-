@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // Import ChatBotProvider
 import { ChatBotProvider } from './components/Chatbot/ChatBotContext';
-import EnhancedChatBot from './components/Chatbot/EnhancedChatbot';
+import EnhancedChatBot from './components/Chatbot/EnhancedChatBot';
 
 import Layout from './Layout';
 import Home from './components/Home/Home';
