@@ -1,4 +1,4 @@
-import pool from "../config/database.js";//database connection
+import pool from "../api/config/database.js";//database connection
 import fs from 'fs';
 import path from 'path';
 

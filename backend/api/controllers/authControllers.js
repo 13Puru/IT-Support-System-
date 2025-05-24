@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import pool from "../config/database.js";
-import transporter from "../config/nodemailer.js";
+import transporter from "../api/config/nodemailer.js";
 
 //controller function for registartion
 export const register = async (req, res) => {
