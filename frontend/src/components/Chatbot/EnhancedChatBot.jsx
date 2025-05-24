@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, Minimize2, Maximize2, RefreshCw } from 'lucide-react';
-import { useChatBot } from './ChatbotContext';
+import { useChatBot } from './ChatBotContext';
 
 const EnhancedChatBot = () => {
   const { 
