@@ -1,5 +1,5 @@
-import pool from "../api/config/database.js";
-import transporter from "../api/config/nodemailer.js";
+import pool from "../config/database.js";
+import transporter from "../config/nodemailer.js";
 import bcrypt from "bcryptjs";
 
 //Controller function to get user details

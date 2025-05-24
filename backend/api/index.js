@@ -3,18 +3,16 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import cookieParser from "cookie-parser";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 import pool from "./config/database.js";
 import authRouter from "./routes/authRoutes.js";
 import ticketRouter from "./routes/ticketRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 import categoryRouter from "./routes/categoryRoutes.js";
-import fs from "fs";
-import path from "path";
 import { authMiddleware } from "./middleware/middleware.js";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-import serverless from "serverless-http"; // 👈 ADD THIS
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -31,12 +29,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({ origin: FrontendAccess, credentials: true }));
 
-// Routes
+// API Routes
 app.use("/api/auth", authRouter);
 app.use("/api/ticket", ticketRouter);
 app.use("/api/user", userRouter);
 app.use("/api/category", categoryRouter);
 
+// Secure file access route
 app.get("/uploads/:filename", authMiddleware, (req, res) => {
   const filename = path.basename(req.params.filename);
   const filePath = path.join(__dirname, "..", "uploads", filename);
@@ -50,18 +49,12 @@ app.get("/uploads/:filename", authMiddleware, (req, res) => {
 
   res.sendFile(filePath);
 });
-
-app.get("/", (req, res) => {
-  res.send("🛠️ IT Support Backend is running!");
-});
-
-// For local dev only
+// Start server only if not running on Vercel
 if (process.env.NODE_ENV !== "production") {
   const PORT = process.env.PORT || 8383;
   app.listen(PORT, () => {
     console.log(`🚀 Server is running locally on port: ${PORT}`);
   });
 }
-
-// 👇 Export serverless handler for Vercel
-export const handler = serverless(app);
+// Export handler for Vercel
+export default app;

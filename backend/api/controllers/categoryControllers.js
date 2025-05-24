@@ -1,4 +1,4 @@
-import pool from "../api/config/database.js";
+import pool from "../config/database.js";
 
 export const categoryUpdate = async (req, res) => {
     const categoryObject = req.body;
