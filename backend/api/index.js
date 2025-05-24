@@ -52,5 +52,5 @@ app.get("/uploads/:filename", authMiddleware, (req, res) => {
 });
 
 // Export handler for Vercel
-import { createServer } from "@vercel/node";
-export const handler = createServer(app);
+export default app;
+
