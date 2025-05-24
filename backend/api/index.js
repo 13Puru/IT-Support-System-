@@ -50,11 +50,8 @@ app.get("/uploads/:filename", authMiddleware, (req, res) => {
   res.sendFile(filePath);
 });
 // Start server only if not running on Vercel
-if (process.env.NODE_ENV !== "production") {
   const PORT = process.env.PORT || 8383;
   app.listen(PORT, () => {
     console.log(`🚀 Server is running locally on port: ${PORT}`);
   });
-}
-// Export handler for Vercel
-export default app;
+
