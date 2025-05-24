@@ -50,6 +50,11 @@ app.get("/uploads/:filename", authMiddleware, (req, res) => {
 
   res.sendFile(filePath);
 });
+
+app.get("/", (req, res) => {
+  res.send("🛠️ IT Support Backend is running!");
+});
+
 // Start server only if not running on Vercel
 if (process.env.NODE_ENV !== "production") {
   const PORT = process.env.PORT || 8383;
